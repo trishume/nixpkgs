@@ -60,7 +60,7 @@ let
   gtk = gtk3;
   gtkmm = gtkmm3;
   gtkvnc = pkgs.gtkvnc.override { enableGTK3 = true; };
-  vala = pkgs.vala_0_26;
+  vala = pkgs.vala_0_32;
   gegl_0_3 = pkgs.gegl_0_3.override { inherit gtk; };
 
 # Simplify the nixos module and gnome packages
