@@ -5104,6 +5104,8 @@ in
 
   vala_0_28 = callPackage ../development/compilers/vala/0.28.nix { };
 
+  vala_0_32 = callPackage ../development/compilers/vala/0.32.nix { };
+
   visualcpp = callPackage ../development/compilers/visual-c++ { };
 
   vs90wrapper = callPackage ../development/compilers/vs90wrapper { };
