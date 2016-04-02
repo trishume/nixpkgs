@@ -7,16 +7,9 @@
 , libvorbis, flac, exempi, networkmanager
 , libpng, libexif, libgsf, libuuid, bzip2 }:
 
-let
-  majorVersion = "1.8";
-in
 stdenv.mkDerivation rec {
-  name = "tracker-${majorVersion}.0";
 
-  src = fetchurl {
-    url = "mirror://gnome/sources/tracker/${majorVersion}/${name}.tar.xz";
-    sha256 = "0zchaahk4w7dwanqk1vx0qgnyrlzlp81krwawfx3mv5zffik27x1";
-  };
+  inherit (import ./src.nix fetchurl) name src;
 
   propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard ];
 
