@@ -8,14 +8,14 @@
 , libpng, libexif, libgsf, libuuid, bzip2 }:
 
 let
-  majorVersion = "1.4";
+  majorVersion = "1.8";
 in
 stdenv.mkDerivation rec {
   name = "tracker-${majorVersion}.0";
 
   src = fetchurl {
     url = "mirror://gnome/sources/tracker/${majorVersion}/${name}.tar.xz";
-    sha256 = "1ssisbix7ib3d6bgx9s675gx6ayy68jq2srhpzv038mkbaskaz68";
+    sha256 = "0zchaahk4w7dwanqk1vx0qgnyrlzlp81krwawfx3mv5zffik27x1";
   };
 
   propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard ];
