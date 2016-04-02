@@ -5,14 +5,14 @@
 , gnome3, librsvg, gnome_doc_utils, webkitgtk }:
 
 let
-  majorVersion = "0.8";
+  majorVersion = "0.10";
 in
 stdenv.mkDerivation rec {
-  name = "geary-${majorVersion}.2";
+  name = "geary-${majorVersion}.0";
 
   src = fetchurl {
     url = "mirror://gnome/sources/geary/${majorVersion}/${name}.tar.xz";
-    sha256 = "3cfa626168935acf49c9415fad54c7849f17fd833026cfd3c224ba0fb892d641";
+    sha256 = "19dwpla35cch5rd0bw1v9s0cmygzv6zjs24rxvf0l14b3dd7l6a6";
   };
 
   propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard ];
@@ -38,9 +38,6 @@ stdenv.mkDerivation rec {
   '';
 
   enableParallelBuilding = true;
-
-  patches = [ ./disable_valadoc.patch ];
-  patchFlags = "-p0";
 
   meta = with stdenv.lib; {
     homepage = https://wiki.gnome.org/Apps/Geary;
