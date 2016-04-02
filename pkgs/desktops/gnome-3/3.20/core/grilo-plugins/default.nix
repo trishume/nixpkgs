@@ -3,14 +3,16 @@
 , gmime, json_glib, avahi, tracker, itstool }:
 
 stdenv.mkDerivation rec {
-  name = "grilo-plugins-0.2.13";
+  major = "0.3";
+  minor = "1";
+  name = "grilo-plugins-${major}.${minor}";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/grilo-plugins/0.2/${name}.tar.xz";
-    sha256 = "008jwm5ydl0k25p3d2fkcail40fj9y3qknihxb5fg941p8qlhm55";
+    url = "mirror://gnome/sources/grilo-plugins/${major}/${name}.tar.xz";
+    sha256 = "1akd7q6pqnkcnayrdfjb0qx5w5yyl06kxzwhqp2gxm4y1b208pb0";
   };
 
-  installFlags = [ "GRL_PLUGINS_DIR=$(out)/lib/grilo-0.2" ];
+  installFlags = [ "GRL_PLUGINS_DIR=$(out)/lib/grilo-${major}" ];
 
   buildInputs = [ pkgconfig gnome3.grilo libxml2 gupnp gssdp gnome3.libgdata
                   lua5 liboauth gupnp_av sqlite gnome3.gnome_online_accounts
