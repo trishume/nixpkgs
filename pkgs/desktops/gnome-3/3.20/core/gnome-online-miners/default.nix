@@ -1,17 +1,8 @@
 { stdenv, fetchurl, pkgconfig, glib, gnome3, libxml2
 , libsoup, json_glib, gmp, openssl, makeWrapper }:
 
-let
-  majVer = "3.14";
-in stdenv.mkDerivation rec {
-  name = "gnome-online-miners-${majVer}.2";
-
-  src = fetchurl {
-    url = "mirror://gnome/sources/gnome-online-miners/${majVer}/${name}.tar.xz";
-    sha256 = "0bbak8srcrvnw18s4ls5mqaamx9nqdi93lij6yjs0a3q320k22xl";
-  };
-
-  doCheck = true;
+stdenv.mkDerivation rec {
+  inherit (import ./src.nix fetchurl) name src;
 
   buildInputs = [ pkgconfig glib gnome3.libgdata libxml2 libsoup gmp openssl
                   gnome3.grilo gnome3.libzapojit gnome3.grilo-plugins
@@ -23,7 +14,7 @@ in stdenv.mkDerivation rec {
   preFixup = ''
     for f in $out/libexec/*; do
       wrapProgram "$f" \
-        --prefix GRL_PLUGIN_PATH : "${gnome3.grilo-plugins}/lib/grilo-0.2"
+        --prefix GRL_PLUGIN_PATH : "${gnome3.grilo-plugins}/lib/grilo-${gnome3.grilo-plugins.major}"
     done
   '';
 
