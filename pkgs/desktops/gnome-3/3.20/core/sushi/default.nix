@@ -15,7 +15,12 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  broken = true; # seems to include ht-ft.h instead of harfbuzz/ht-ft.h
+  postConfigure = ''
+    substituteInPlace src/libsushi/sushi-font-widget.h \
+        --replace "<hb-ft.h>" "<harfbuzz/hb-ft.h>"
+    substituteInPlace src/libsushi/sushi-font-widget.c \
+        --replace "<hb-glib.h>" "<harfbuzz/hb-glib.h>"
+  '';
 
   preFixup = ''
     wrapProgram $out/libexec/sushi-start \
