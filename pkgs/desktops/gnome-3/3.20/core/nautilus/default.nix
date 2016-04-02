@@ -1,6 +1,6 @@
 { stdenv, fetchurl, pkgconfig, libxml2, dbus_glib, shared_mime_info, libexif
 , gtk, gnome3, libunique, intltool, gobjectIntrospection
-, libnotify, wrapGAppsHook, exempi, librsvg, tracker }:
+, libnotify, wrapGAppsHook, exempi, librsvg, tracker, libselinux }:
 
 stdenv.mkDerivation rec {
   inherit (import ./src.nix fetchurl) name src;
@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ libxml2 dbus_glib shared_mime_info libexif gtk libunique intltool exempi librsvg
                   gnome3.gnome_desktop gnome3.adwaita-icon-theme
-                  gnome3.gsettings_desktop_schemas gnome3.dconf libnotify tracker ];
+                  gnome3.gsettings_desktop_schemas gnome3.dconf libnotify tracker libselinux ];
 
   patches = [ ./extension_dir.patch ];
 
