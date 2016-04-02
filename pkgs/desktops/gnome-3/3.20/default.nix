@@ -80,10 +80,10 @@ let
   dconf = callPackage ./core/dconf { };
   dconf-editor = callPackage ./core/dconf-editor { };
 
-  empathy = callPackage ./core/empathy { 
-    webkitgtk = webkitgtk24x;
-    clutter-gst = pkgs.clutter-gst;
-  };
+  # empathy = callPackage ./core/empathy {
+  #   webkitgtk = webkitgtk24x;
+  #   clutter-gst = pkgs.clutter-gst;
+  # };
 
   epiphany = callPackage ./core/epiphany { };
 
