@@ -17,7 +17,8 @@ stdenv.mkDerivation rec {
   preConfigure = "intltoolize -f";
 
   configureFlags = [ "--with-controlcenterdir=$(out)/gnome-control-center/keybindings"
-                     "--with-dbusservicesdir=$(out)/share/dbus-1/services" ];
+                     "--with-dbusservicesdir=$(out)/share/dbus-1/services"
+                     "--with-systemduserunitdir=$(out)/etc/systemd/user" ];
 
   enableParallelBuilding = true;
 
